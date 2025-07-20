@@ -4,6 +4,7 @@ import { localStorageUtils } from "@/utils/localStorage";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { UserData } from "@/types/user";
 import { 
   FaUser, 
   FaEnvelope, 
@@ -17,7 +18,7 @@ import styles from "./Dashboard.module.scss";
 
 const Dashboard = () => {
   const router = useRouter();
-  const [userData, setUserData] = useState<any | null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   const getUserData = async () => {
     const response = await api.get("/api");
