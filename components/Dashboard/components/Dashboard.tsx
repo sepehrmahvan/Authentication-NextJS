@@ -1,20 +1,19 @@
 "use client";
 import api from "@/services/api";
+import { UserData } from "@/types/user";
 import { localStorageUtils } from "@/utils/localStorage";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { UserData } from "@/types/user";
-import { 
-  FaUser, 
-  FaEnvelope, 
-  FaPhone, 
-  FaMapMarkerAlt, 
-  FaShieldAlt, 
+import { useEffect, useState } from "react";
+import {
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaShieldAlt,
   FaSignOutAlt,
-  FaCircle
+  FaUser
 } from "react-icons/fa";
-import styles from "./Dashboard.module.scss";
+import { toast } from "react-toastify";
+import styles from "../styles/Dashboard.module.scss";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -82,9 +81,9 @@ const Dashboard = () => {
                 خوش آمدید به پنل کاربری شما
               </p>
               <div className={styles.userInfo}>
-                <span><FaUser /> {userData.login.username}</span>
-                <span><FaEnvelope /> {userData.email}</span>
-                <span><FaPhone /> {userData.phone}</span>
+                <span className={styles.userInfoItem}><FaUser /> {userData.login.username}</span>
+                <span className={styles.userInfoItem}><FaEnvelope /> {userData.email}</span>
+                <span className={styles.userInfoItem}><FaPhone /> {userData.phone}</span>
               </div>
             </div>
           </div>
