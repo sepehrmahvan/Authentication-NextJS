@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import styles from '../styles/Body.module.scss'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { toastConfig } from '../utils/toastConfig'
+import ClientWrapper from '../components/ClientWrapper'
+import Auth from '../components/Auth'
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,10 +17,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html lang="fa" dir="rtl">
+      <body className={styles.body} cz-shortcut-listen="true">
+        <ClientWrapper>
+          <Auth>
+            {children}
+          </Auth>
+        </ClientWrapper>
+        <ToastContainer {...toastConfig} newestOnTop={false} pauseOnFocusLoss />
       </body>
     </html>
   );
